@@ -1,17 +1,16 @@
 # xshady
 
-This repo contains some projects that demonstrate the presence of vulnerabilities in libraries. This can be used as input for security analyses in related libraries. A key feature is that the vulnerabilities are testable, and the projects follow a structure that makes them easy to refactor if the analysis requires it. 
-
+This repo contains some projects that demonstrate the presence of some known vulnerabilities in libraries. This can be used as input for security analyses in related libraries. A key feature is that the vulnerabilities are testable, and the projects follow a structure that makes them easy to refactor if the analysis requires it. Projects also contain the reports produced by some SCA tools -- this can be used to check those tools for soundness / recall , using the testable projects as oracles.
 
 ## Project Structure
 
-Each project is named `CVE*`, uses the standard Maven repository layout, and has a single test. If this test succeeds, the vulnerability refered to by the CVE is present.
+Each project is named `CVE*`, uses the standard Maven repository layout, and has a single test. If this test succeeds, the vulnerability refered to by the CVE in the name is present.
 
-The `pom.xml` defines the Java version to be used by setting the         `<maven.compiler.target>` and `<maven.compiler.source>` properties, in most case this is set to `11`.
+The `pom.xml` defines / should define the Java version to be used by setting the  `<maven.compiler.target>` and `<maven.compiler.source>` properties, in most case this is set to `11`.
 
-Some tests may have additional requirements wrt Java version and OS, those are enforced by JUNit preconditions. When they fail, the respective test(s) will be skipped. I.e. the precense of a vulnerability is shown by all tests passing, and not by no test failing. I.e. `mvn test` succeeded is not sufficient, surefire reports (in `target/surefire`) must be inspected to ensure no test was skipped.
+Some tests may have additional requirements wrt Java version and OS, those are enforced by JUNit preconditions. When those fail, the respective test(s) will be skipped. I.e. the presence of a vulnerability is shown by all tests passing, and **not** by none of the tests failing. I.e. `mvn test` succeeded is not sufficient, surefire reports (in `target/surefire`) must be inspected to ensure that no test was skipped.
 
-Each project point to a vulnerability in a Maven artifact. This can be found in the dependency section in `pom.xml`. Note that there is always an additional dependency to junit5 which is used for testing. 
+Each project points to a vulnerability in a Maven artifact. This artifact can be found in the dependency section in `pom.xml`. Note that there is always an additional dependency to junit5 which is used for testing. 
 
 
 ## Running Software Composition Security Analyses
@@ -56,7 +55,7 @@ This functionality is based on [checkmarx](https://checkmarx.com/).
 
 ## A Note on Reproducibility 
 
-The security tools use an evolving database, so generally, re-running a scan may return more vulnerabilties than reported. 
+The security tools use an evolving database, so generally, re-running a scan may return more vulnerabilties than reported. Check the respective reports for meta data such as versions, and the commit dates for the database that was used.
 
 
 
