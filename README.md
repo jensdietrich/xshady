@@ -1,15 +1,17 @@
 # xshady
 
-This repo contains some projects that demonstrate the precense of vulnerabilities in libraries that use shading. The focus is on libraries not using the [shade plugin](https://maven.apache.org/plugins/maven-shade-plugin/) or similar tools, i.e. project that do not have meta data that allow dependency scanners to detect those vulnerabilities. Results are discovered with a toolchain we are building, aiming at discovering blindspots in existing SCA tools. 
+This repo contains some projects that demonstrate the presence of vulnerabilities in libraries. This can be used as input for security analyses in related libraries. A key feature is that the vulnerabilities are testable, and the projects follow a structure that makes them easy to refactor if the analysis requires it. 
 
-## Repository Structure
 
-The top level folders have names corresponding to the (slightly modified to make it a valid file name) [Maven coordinates (GAVs)](https://help.sonatype.com/repomanager3/using-nexus-repository/repository-manager-concepts/an-example---maven-repository-format) of vulnerable components that are being shaded. 
+## Project Structure
 
-This subfolders then have a subfolder named `original` containing a maven project with a dependency to the vulnerable component, and tests illustrating  vulnerabilities. Dependeabot and similar tools will detect those vulnerabilities as expected through the vulnerable dependencies. Not all vulnerabilities have such tests, as the setups verifing the vulnerabilities cannot always be acquired or confirmed. 
+Each project is named `CVE*`, uses the standard Maven repository layout, and has a single test. If this test succeeds, the vulnerability refered to by the CVE is present.
 
-Other subfolders contain projects where the vulnerable library is shaded (or sometimes just copied, i.e. without renaming packages), plus the tests to illustrate the respective vulnerability (the same tests as used in `original`). The interesting part is that existing security scanners do not pick this up. 
+The `pom.xml` defines the Java version to be used by setting the         `<maven.compiler.target>` and `<maven.compiler.source>` properties, in most case this is set to `11`.
 
+Some tests may have additional requirements wrt Java version and OS, those are enforced by JUNit preconditions. When they fail, the respective test(s) will be skipped. I.e. the precense of a vulnerability is shown by all tests passing, and not by no test failing. I.e. `mvn test` succeeded is not sufficient, surefire reports (in `target/surefire`) must be inspected to ensure no test was skipped.
+
+Each project point to a vulnerability in a Maven artifact. This can be found in the dependency section in `pom.xml`. Note that there is always an additional dependency to junit5 which is used for testing. 
 
 
 ## Running Software Composition Security Analyses
@@ -54,7 +56,8 @@ This functionality is based on [checkmarx](https://checkmarx.com/).
 
 ## A Note on Reproducibility 
 
-The security tools use an evolving database, so generally, re-running a scan may return more vulnerabilties than reported. We aim to commit results immediately after running scans, so that the commit timestamps can be used as provenance for the results reported.
+The security tools use an evolving database, so generally, re-running a scan may return more vulnerabilties than reported. 
+
 
 
  

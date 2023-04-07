@@ -1,0 +1,894 @@
+{
+  "vulnerabilities": [
+    {
+      "id": "SNYK-JAVA-ORGYAML-2806360",
+      "title": "Denial of Service (DoS)",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "credit": [
+        "unknown"
+      ],
+      "semver": {
+        "vulnerable": [
+          "[0,1.31)"
+        ]
+      },
+      "exploit": "Not Defined",
+      "fixedIn": [
+        "1.31"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "java",
+      "severity": "high",
+      "cvssScore": 7.5,
+      "functions": [],
+      "malicious": false,
+      "moduleName": "org.yaml:snakeyaml",
+      "references": [
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/commits/fc300780da21f4bb92c148bc90257201220cf174",
+          "title": "Bitbucket Commit"
+        },
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/issues/525",
+          "title": "BitBucket Issues"
+        },
+        {
+          "url": "https://github.com/snakeyaml/snakeyaml/commit/fc300780da21f4bb92c148bc90257201220cf174",
+          "title": "GitHub Commit"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "NVD",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 7.5,
+          "modificationTime": "2022-10-06T18:10:44.057834Z"
+        },
+        {
+          "assigner": "Red Hat",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 7.5,
+          "modificationTime": "2022-11-24T15:49:45.822758Z"
+        },
+        {
+          "assigner": "SUSE",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 6.2,
+          "modificationTime": "2022-09-29T23:09:58.826990Z"
+        }
+      ],
+      "description": "## Overview\n[org.yaml:snakeyaml](https://code.google.com/p/snakeyaml/source/browse/) is a YAML 1.1 parser and emitter for Java.\nAffected versions of this package are vulnerable to Denial of Service (DoS) due to missing nested depth limitation for collections.\n\n## Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its intended and legitimate users.\n\nUnlike other vulnerabilities, DoS attacks usually do not aim at breaching security. Rather, they are focused on making websites and services unavailable to genuine users resulting in downtime.\n\nOne popular Denial of Service vulnerability is DDoS (a Distributed Denial of Service), an attack that attempts to clog network pipes to the system by generating a large volume of traffic from many machines.\n\nWhen it comes to open source libraries, DoS vulnerabilities allow attackers to trigger such a crash or crippling of the service by using a flaw either in the application code or from the use of open source libraries.\n\nTwo common types of DoS vulnerabilities:\n\n* High CPU/Memory Consumption- An attacker sending crafted requests that could cause the system to take a disproportionate amount of time to process. For example, [commons-fileupload:commons-fileupload](SNYK-JAVA-COMMONSFILEUPLOAD-30082).\n\n* Crash - An attacker sending crafted requests that could cause the system to crash. For Example,  [npm `ws` package](https://snyk.io/vuln/npm:ws:20171108)\n\n## Remediation\nUpgrade `org.yaml:snakeyaml` to version 1.31 or higher.\n## References\n- [Bitbucket Commit](https://bitbucket.org/snakeyaml/snakeyaml/commits/fc300780da21f4bb92c148bc90257201220cf174)\n- [BitBucket Issues](https://bitbucket.org/snakeyaml/snakeyaml/issues/525)\n- [GitHub Commit](https://github.com/snakeyaml/snakeyaml/commit/fc300780da21f4bb92c148bc90257201220cf174)\n",
+      "identifiers": {
+        "CVE": [
+          "CVE-2022-25857",
+          "CVE-2022-38749"
+        ],
+        "CWE": [
+          "CWE-400"
+        ]
+      },
+      "packageName": "org.yaml:snakeyaml",
+      "proprietary": true,
+      "creationTime": "2022-05-01T15:16:35.982479Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2022-05-01T13:50:41Z",
+      "packageManager": "maven",
+      "mavenModuleName": {
+        "groupId": "org.yaml",
+        "artifactId": "snakeyaml"
+      },
+      "publicationTime": "2022-08-29T15:10:51Z",
+      "modificationTime": "2022-11-24T15:49:45.822758Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "high",
+      "from": [
+        "io.github.jensdietrich.xshady:CVE-2022-38749@1.0.0",
+        "org.yaml:snakeyaml@1.25"
+      ],
+      "upgradePath": [
+        false,
+        "org.yaml:snakeyaml@1.31"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.yaml:snakeyaml",
+      "version": "1.25"
+    },
+    {
+      "id": "SNYK-JAVA-ORGYAML-3016888",
+      "title": "Stack-based Buffer Overflow",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L/E:P",
+      "credit": [
+        "Dae"
+      ],
+      "semver": {
+        "vulnerable": [
+          "[,1.32)"
+        ]
+      },
+      "exploit": "Proof of Concept",
+      "fixedIn": [
+        "1.32"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "java",
+      "severity": "low",
+      "cvssScore": 3.7,
+      "functions": [],
+      "malicious": false,
+      "moduleName": "org.yaml:snakeyaml",
+      "references": [
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/commits/5056a448f09c46250346c338e821386caa751182",
+          "title": "Bitbucket Commit"
+        },
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/issues/531/stackoverflow-oss-fuzz-47081",
+          "title": "Bitbucket Issue and PoC"
+        },
+        {
+          "url": "https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=47081",
+          "title": "Chromium Bugs"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "NVD",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 6.5,
+          "modificationTime": "2022-09-28T01:10:52.465310Z"
+        },
+        {
+          "assigner": "Red Hat",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 6.5,
+          "modificationTime": "2022-11-18T15:42:50.117466Z"
+        },
+        {
+          "assigner": "SUSE",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 7.5,
+          "modificationTime": "2022-09-29T23:11:09.658384Z"
+        }
+      ],
+      "description": "## Overview\n[org.yaml:snakeyaml](https://code.google.com/p/snakeyaml/source/browse/) is a YAML 1.1 parser and emitter for Java.\nAffected versions of this package are vulnerable to Stack-based Buffer Overflow when parsing crafted untrusted YAML files, which can lead to a denial-of-service.\n## Remediation\nUpgrade `org.yaml:snakeyaml` to version 1.32 or higher.\n## References\n- [Bitbucket Commit](https://bitbucket.org/snakeyaml/snakeyaml/commits/5056a448f09c46250346c338e821386caa751182)\n- [Bitbucket Issue and PoC](https://bitbucket.org/snakeyaml/snakeyaml/issues/531/stackoverflow-oss-fuzz-47081)\n- [Chromium Bugs](https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=47081)\n",
+      "identifiers": {
+        "CVE": [
+          "CVE-2022-38752"
+        ],
+        "CWE": [
+          "CWE-121"
+        ]
+      },
+      "packageName": "org.yaml:snakeyaml",
+      "proprietary": false,
+      "creationTime": "2022-09-05T11:04:53.633779Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2022-09-05T10:57:12Z",
+      "packageManager": "maven",
+      "mavenModuleName": {
+        "groupId": "org.yaml",
+        "artifactId": "snakeyaml"
+      },
+      "publicationTime": "2022-09-05T14:36:28Z",
+      "modificationTime": "2022-11-18T15:42:50.117466Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "low",
+      "from": [
+        "io.github.jensdietrich.xshady:CVE-2022-38749@1.0.0",
+        "org.yaml:snakeyaml@1.25"
+      ],
+      "upgradePath": [
+        false,
+        "org.yaml:snakeyaml@1.32"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.yaml:snakeyaml",
+      "version": "1.25"
+    },
+    {
+      "id": "SNYK-JAVA-ORGYAML-3016889",
+      "title": "Stack-based Buffer Overflow",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "credit": [
+        "Dae"
+      ],
+      "semver": {
+        "vulnerable": [
+          "[,1.31)"
+        ]
+      },
+      "exploit": "Not Defined",
+      "fixedIn": [
+        "1.31"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "java",
+      "severity": "low",
+      "cvssScore": 3.7,
+      "functions": [],
+      "malicious": false,
+      "moduleName": "org.yaml:snakeyaml",
+      "references": [
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/commits/fc300780da21f4bb92c148bc90257201220cf174",
+          "title": "Bitbucket Commit"
+        },
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/issues/526/stackoverflow-oss-fuzz-47027",
+          "title": "Bitbucket Issue"
+        },
+        {
+          "url": "https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=47027",
+          "title": "Chromium Bugs"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "NVD",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 5.5,
+          "modificationTime": "2022-10-06T18:10:43.429823Z"
+        },
+        {
+          "assigner": "Red Hat",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 5.5,
+          "modificationTime": "2022-11-22T15:47:19.045092Z"
+        },
+        {
+          "assigner": "SUSE",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 7.5,
+          "modificationTime": "2022-09-29T23:10:14.137765Z"
+        }
+      ],
+      "description": "## Overview\n[org.yaml:snakeyaml](https://code.google.com/p/snakeyaml/source/browse/) is a YAML 1.1 parser and emitter for Java.\nAffected versions of this package are vulnerable to Stack-based Buffer Overflow in `org.yaml.snakeyaml.constructor.BaseConstructor.constructObject` when parsing crafted untrusted YAML files, which can lead to a denial-of-service.\n## Remediation\nUpgrade `org.yaml:snakeyaml` to version 1.31 or higher.\n## References\n- [Bitbucket Commit](https://bitbucket.org/snakeyaml/snakeyaml/commits/fc300780da21f4bb92c148bc90257201220cf174)\n- [Bitbucket Issue](https://bitbucket.org/snakeyaml/snakeyaml/issues/526/stackoverflow-oss-fuzz-47027)\n- [Chromium Bugs](https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=47027)\n",
+      "identifiers": {
+        "CVE": [
+          "CVE-2022-38750"
+        ],
+        "CWE": [
+          "CWE-121"
+        ]
+      },
+      "packageName": "org.yaml:snakeyaml",
+      "proprietary": false,
+      "creationTime": "2022-09-05T11:15:20.545842Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2022-09-05T11:07:09Z",
+      "packageManager": "maven",
+      "mavenModuleName": {
+        "groupId": "org.yaml",
+        "artifactId": "snakeyaml"
+      },
+      "publicationTime": "2022-09-05T14:37:45.062245Z",
+      "modificationTime": "2022-11-22T15:47:19.045092Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "low",
+      "from": [
+        "io.github.jensdietrich.xshady:CVE-2022-38749@1.0.0",
+        "org.yaml:snakeyaml@1.25"
+      ],
+      "upgradePath": [
+        false,
+        "org.yaml:snakeyaml@1.31"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.yaml:snakeyaml",
+      "version": "1.25"
+    },
+    {
+      "id": "SNYK-JAVA-ORGYAML-3016891",
+      "title": "Stack-based Buffer Overflow",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L/E:P",
+      "credit": [
+        "Dae"
+      ],
+      "semver": {
+        "vulnerable": [
+          "[,1.31)"
+        ]
+      },
+      "exploit": "Proof of Concept",
+      "fixedIn": [
+        "1.31"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "java",
+      "severity": "medium",
+      "cvssScore": 4.3,
+      "functions": [],
+      "malicious": false,
+      "moduleName": "org.yaml:snakeyaml",
+      "references": [
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/commits/f3ab4e0f54c37ddb10f00b71d04187bb0ef1799c",
+          "title": "Bitbucket Commit"
+        },
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/issues/530/stackoverflow-oss-fuzz-47039",
+          "title": "Bitbucket Issue"
+        },
+        {
+          "url": "https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=47039",
+          "title": "Chromium Bugs"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "NVD",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 6.5,
+          "modificationTime": "2022-10-06T18:10:43.388674Z"
+        },
+        {
+          "assigner": "Red Hat",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 6.5,
+          "modificationTime": "2022-11-22T15:46:51.068109Z"
+        },
+        {
+          "assigner": "SUSE",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 7.5,
+          "modificationTime": "2022-09-29T23:10:22.890759Z"
+        }
+      ],
+      "description": "## Overview\n[org.yaml:snakeyaml](https://code.google.com/p/snakeyaml/source/browse/) is a YAML 1.1 parser and emitter for Java.\nAffected versions of this package are vulnerable to Stack-based Buffer Overflow when parsing crafted untrusted YAML files, which can lead to a denial-of-service.\n## Remediation\nUpgrade `org.yaml:snakeyaml` to version 1.31 or higher.\n## References\n- [Bitbucket Commit](https://bitbucket.org/snakeyaml/snakeyaml/commits/f3ab4e0f54c37ddb10f00b71d04187bb0ef1799c)\n- [Bitbucket Issue](https://bitbucket.org/snakeyaml/snakeyaml/issues/530/stackoverflow-oss-fuzz-47039)\n- [Chromium Bugs](https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=47039)\n",
+      "identifiers": {
+        "CVE": [
+          "CVE-2022-38751"
+        ],
+        "CWE": [
+          "CWE-121"
+        ]
+      },
+      "packageName": "org.yaml:snakeyaml",
+      "proprietary": false,
+      "creationTime": "2022-09-05T11:36:11.867021Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2022-09-05T11:27:18Z",
+      "packageManager": "maven",
+      "mavenModuleName": {
+        "groupId": "org.yaml",
+        "artifactId": "snakeyaml"
+      },
+      "publicationTime": "2022-09-05T14:35:35.219360Z",
+      "modificationTime": "2022-11-22T15:46:51.068109Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.jensdietrich.xshady:CVE-2022-38749@1.0.0",
+        "org.yaml:snakeyaml@1.25"
+      ],
+      "upgradePath": [
+        false,
+        "org.yaml:snakeyaml@1.31"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.yaml:snakeyaml",
+      "version": "1.25"
+    },
+    {
+      "id": "SNYK-JAVA-ORGYAML-3113851",
+      "title": "Stack-based Buffer Overflow",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "credit": [
+        "OSSFuzz"
+      ],
+      "semver": {
+        "vulnerable": [
+          "[,1.32)"
+        ]
+      },
+      "exploit": "Not Defined",
+      "fixedIn": [
+        "1.32"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "java",
+      "severity": "low",
+      "cvssScore": 3.7,
+      "functions": [],
+      "malicious": false,
+      "moduleName": "org.yaml:snakeyaml",
+      "references": [
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/commits/72dfa9f1074abe2b8a6c8776bee4476b0aed02e3",
+          "title": "Bitbucket Commit"
+        },
+        {
+          "url": "https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=50355",
+          "title": "Chromium Bugs"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "NVD",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 6.5,
+          "modificationTime": "2022-11-16T01:10:22.344254Z"
+        },
+        {
+          "assigner": "Red Hat",
+          "severity": "medium",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 6.5,
+          "modificationTime": "2022-12-10T14:01:32.067509Z"
+        }
+      ],
+      "description": "## Overview\n[org.yaml:snakeyaml](https://code.google.com/p/snakeyaml/source/browse/) is a YAML 1.1 parser and emitter for Java.\nAffected versions of this package are vulnerable to Stack-based Buffer Overflow when supplied with untrusted input, due to improper limitation for incoming data.\n## Remediation\nUpgrade `org.yaml:snakeyaml` to version 1.32 or higher.\n## References\n- [Bitbucket Commit](https://bitbucket.org/snakeyaml/snakeyaml/commits/72dfa9f1074abe2b8a6c8776bee4476b0aed02e3)\n- [Chromium Bugs](https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=50355)\n",
+      "identifiers": {
+        "CVE": [
+          "CVE-2022-41854"
+        ],
+        "CWE": [
+          "CWE-121"
+        ]
+      },
+      "packageName": "org.yaml:snakeyaml",
+      "proprietary": false,
+      "creationTime": "2022-11-13T08:57:24.881082Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2022-11-13T08:46:27Z",
+      "packageManager": "maven",
+      "mavenModuleName": {
+        "groupId": "org.yaml",
+        "artifactId": "snakeyaml"
+      },
+      "publicationTime": "2022-11-13T09:57:47.266902Z",
+      "modificationTime": "2022-12-10T14:01:32.067509Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "low",
+      "from": [
+        "io.github.jensdietrich.xshady:CVE-2022-38749@1.0.0",
+        "org.yaml:snakeyaml@1.25"
+      ],
+      "upgradePath": [
+        false,
+        "org.yaml:snakeyaml@1.32"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.yaml:snakeyaml",
+      "version": "1.25"
+    },
+    {
+      "id": "SNYK-JAVA-ORGYAML-3152153",
+      "title": "Arbitrary Code Execution",
+      "CVSSv3": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+      "credit": [
+        "Justin Taft",
+        "securisec"
+      ],
+      "semver": {
+        "vulnerable": [
+          "[0,2.0)"
+        ]
+      },
+      "exploit": "Not Defined",
+      "fixedIn": [
+        "2.0"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "java",
+      "severity": "medium",
+      "cvssScore": 6.6,
+      "functions": [],
+      "malicious": false,
+      "moduleName": "org.yaml:snakeyaml",
+      "references": [
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/wiki/Changes",
+          "title": "BitBucket Changelog"
+        },
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/commits/2b8d47c8bcfd402e7a682b7b2674e8d0cb25e522",
+          "title": "Bitbucket Commit"
+        },
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/issues/561/cve-2022-1471-vulnerability-in",
+          "title": "Bitbucket Issue"
+        },
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/issues/565/do-not-allow-global-tags-by-default",
+          "title": "BitBucket Issue"
+        },
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/pull-requests/39",
+          "title": "BitBucket PR"
+        },
+        {
+          "url": "https://bitbucket.org/snakeyaml/snakeyaml/pull-requests/44",
+          "title": "BitBucket PR"
+        },
+        {
+          "url": "https://snyk.io/blog/unsafe-deserialization-snakeyaml-java-cve-2022-1471/",
+          "title": "Snyk Blog - Technical Deepdive"
+        },
+        {
+          "url": "https://github.com/snakeyaml/snakeyaml/blob/master/src/main/java/org/yaml/snakeyaml/constructor/Constructor.java",
+          "title": "Vulnerable Class"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "NVD",
+          "severity": "critical",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvssV3BaseScore": 9.8,
+          "modificationTime": "2022-12-07T01:11:42.237882Z"
+        },
+        {
+          "assigner": "Red Hat",
+          "severity": "critical",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvssV3BaseScore": 9.8,
+          "modificationTime": "2023-04-03T13:59:46.724745Z"
+        }
+      ],
+      "description": "## Overview\n[org.yaml:snakeyaml](https://code.google.com/p/snakeyaml/source/browse/) is a YAML 1.1 parser and emitter for Java.\nAffected versions of this package are vulnerable to Arbitrary Code Execution in the `Constructor` class, which does not restrict which types can be deserialized. This vulnerability is exploitable by an attacker who provides a malicious YAML file for deserialization, which circumvents the `SafeConstructor` class. \r\n\r\nThe maintainers of the library contend that the application's trust would already have had to be compromised or established and therefore dispute the risk associated with this issue on the basis that there is a high bar for exploitation.\n## Remediation\nUpgrade `org.yaml:snakeyaml` to version 2.0 or higher.\n## References\n- [BitBucket Changelog](https://bitbucket.org/snakeyaml/snakeyaml/wiki/Changes)\n- [Bitbucket Commit](https://bitbucket.org/snakeyaml/snakeyaml/commits/2b8d47c8bcfd402e7a682b7b2674e8d0cb25e522)\n- [Bitbucket Issue](https://bitbucket.org/snakeyaml/snakeyaml/issues/561/cve-2022-1471-vulnerability-in)\n- [BitBucket Issue](https://bitbucket.org/snakeyaml/snakeyaml/issues/565/do-not-allow-global-tags-by-default)\n- [BitBucket PR](https://bitbucket.org/snakeyaml/snakeyaml/pull-requests/39)\n- [BitBucket PR](https://bitbucket.org/snakeyaml/snakeyaml/pull-requests/44)\n- [Snyk Blog - Technical Deepdive](https://snyk.io/blog/unsafe-deserialization-snakeyaml-java-cve-2022-1471/)\n- [Vulnerable Class](https://github.com/snakeyaml/snakeyaml/blob/master/src/main/java/org/yaml/snakeyaml/constructor/Constructor.java)\n",
+      "identifiers": {
+        "CVE": [
+          "CVE-2022-1471"
+        ],
+        "CWE": [
+          "CWE-20"
+        ],
+        "GHSA": [
+          "GHSA-mjmj-j48q-9wg2"
+        ]
+      },
+      "packageName": "org.yaml:snakeyaml",
+      "proprietary": false,
+      "creationTime": "2022-12-01T14:55:37.239974Z",
+      "functions_new": [],
+      "alternativeIds": [],
+      "disclosureTime": "2022-12-01T14:49:09Z",
+      "packageManager": "maven",
+      "mavenModuleName": {
+        "groupId": "org.yaml",
+        "artifactId": "snakeyaml"
+      },
+      "publicationTime": "2022-12-08T18:58:07.087174Z",
+      "modificationTime": "2023-04-03T13:59:46.724745Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.jensdietrich.xshady:CVE-2022-38749@1.0.0",
+        "org.yaml:snakeyaml@1.25"
+      ],
+      "upgradePath": [
+        false,
+        "org.yaml:snakeyaml@2.0"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.yaml:snakeyaml",
+      "version": "1.25"
+    },
+    {
+      "id": "SNYK-JAVA-ORGYAML-537645",
+      "title": "Denial of Service (DoS)",
+      "CVSSv3": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L/E:P/RL:T/RC:U",
+      "credit": [
+        "Unknown"
+      ],
+      "semver": {
+        "vulnerable": [
+          "[,1.26)"
+        ]
+      },
+      "exploit": "Proof of Concept",
+      "fixedIn": [
+        "1.26"
+      ],
+      "patches": [],
+      "insights": {
+        "triageAdvice": null
+      },
+      "language": "java",
+      "severity": "medium",
+      "cvssScore": 5.4,
+      "functions": [
+        {
+          "version": [
+            "[,1.26)"
+          ],
+          "functionId": {
+            "filePath": "org/yaml/snakeyaml/composer/Composer.java",
+            "className": "Composer",
+            "functionName": "composeNode"
+          }
+        },
+        {
+          "version": [
+            "[,1.26)"
+          ],
+          "functionId": {
+            "filePath": "org/yaml/snakeyaml/constructor/BaseConstructor.java",
+            "className": "BaseConstructor",
+            "functionName": "constructMapping2ndStep"
+          }
+        }
+      ],
+      "malicious": false,
+      "moduleName": "org.yaml:snakeyaml",
+      "references": [
+        {
+          "url": "https://bitbucket.org/asomov/snakeyaml/commits/da11ddbd91c1f8392ea932b37fa48110fa54ed8c",
+          "title": "Bitbucket Commit"
+        },
+        {
+          "url": "https://bitbucket.org/asomov/snakeyaml/wiki/Billion%20laughs%20attack",
+          "title": "Maintainer Report"
+        },
+        {
+          "url": "https://bitbucket.org/asomov/snakeyaml/issues/377/allow-configuration-for-preventing-billion",
+          "title": "POC: Bitbucket Issue"
+        },
+        {
+          "url": "https://bitbucket.org/asomov/snakeyaml/commits/04378d05777d21d114a9cdc24976ad49c8919222",
+          "title": "Proof Of Concept"
+        }
+      ],
+      "cvssDetails": [
+        {
+          "assigner": "SUSE",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 7.5,
+          "modificationTime": "2022-05-03T22:09:31.798756Z"
+        },
+        {
+          "assigner": "NVD",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cvssV3BaseScore": 7.5,
+          "modificationTime": "2022-07-27T01:11:18.698951Z"
+        },
+        {
+          "assigner": "Red Hat",
+          "severity": "high",
+          "cvssV3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H",
+          "cvssV3BaseScore": 7.6,
+          "modificationTime": "2022-10-25T17:55:24.107152Z"
+        }
+      ],
+      "description": "## Overview\n[org.yaml:snakeyaml](https://code.google.com/p/snakeyaml/source/browse/) is a YAML 1.1 parser and emitter for Java.\nAffected versions of this package are vulnerable to Denial of Service (DoS). The Alias feature in SnakeYAML 1.18 allows entity expansion during a load operation, a related issue to CVE-2003-1564.\r\n\r\n*Note* While the Maintainer acknowledges the existence of the issue, they believe it should be solved by sanitizing the `inputStream` to the parser\n\n## Details\n\nDenial of Service (DoS) describes a family of attacks, all aimed at making a system inaccessible to its intended and legitimate users.\n\nUnlike other vulnerabilities, DoS attacks usually do not aim at breaching security. Rather, they are focused on making websites and services unavailable to genuine users resulting in downtime.\n\nOne popular Denial of Service vulnerability is DDoS (a Distributed Denial of Service), an attack that attempts to clog network pipes to the system by generating a large volume of traffic from many machines.\n\nWhen it comes to open source libraries, DoS vulnerabilities allow attackers to trigger such a crash or crippling of the service by using a flaw either in the application code or from the use of open source libraries.\n\nTwo common types of DoS vulnerabilities:\n\n* High CPU/Memory Consumption- An attacker sending crafted requests that could cause the system to take a disproportionate amount of time to process. For example, [commons-fileupload:commons-fileupload](SNYK-JAVA-COMMONSFILEUPLOAD-30082).\n\n* Crash - An attacker sending crafted requests that could cause the system to crash. For Example,  [npm `ws` package](https://snyk.io/vuln/npm:ws:20171108)\n\n## Remediation\nUpgrade `org.yaml:snakeyaml` to version 1.26 or higher.\n## References\n- [Bitbucket Commit](https://bitbucket.org/asomov/snakeyaml/commits/da11ddbd91c1f8392ea932b37fa48110fa54ed8c)\n- [Maintainer Report](https://bitbucket.org/asomov/snakeyaml/wiki/Billion%20laughs%20attack)\n- [POC: Bitbucket Issue](https://bitbucket.org/asomov/snakeyaml/issues/377/allow-configuration-for-preventing-billion)\n- [Proof Of Concept](https://bitbucket.org/asomov/snakeyaml/commits/04378d05777d21d114a9cdc24976ad49c8919222)\n",
+      "identifiers": {
+        "CVE": [
+          "CVE-2017-18640"
+        ],
+        "CWE": [
+          "CWE-189"
+        ],
+        "GHSA": [
+          "GHSA-rvwf-54qp-4r6v"
+        ]
+      },
+      "packageName": "org.yaml:snakeyaml",
+      "proprietary": false,
+      "creationTime": "2019-12-12T13:08:53.753033Z",
+      "functions_new": [
+        {
+          "version": [
+            "[,1.26)"
+          ],
+          "functionId": {
+            "className": "org.yaml.snakeyaml.composer.Composer",
+            "functionName": "composeNode"
+          }
+        },
+        {
+          "version": [
+            "[,1.26)"
+          ],
+          "functionId": {
+            "className": "org.yaml.snakeyaml.constructor.BaseConstructor",
+            "functionName": "constructMapping2ndStep"
+          }
+        }
+      ],
+      "alternativeIds": [],
+      "disclosureTime": "2019-12-12T03:28:21Z",
+      "packageManager": "maven",
+      "mavenModuleName": {
+        "groupId": "org.yaml",
+        "artifactId": "snakeyaml"
+      },
+      "publicationTime": "2019-12-19T03:28:21Z",
+      "modificationTime": "2022-10-25T17:55:24.107152Z",
+      "socialTrendAlert": false,
+      "severityWithCritical": "medium",
+      "from": [
+        "io.github.jensdietrich.xshady:CVE-2022-38749@1.0.0",
+        "org.yaml:snakeyaml@1.25"
+      ],
+      "upgradePath": [
+        false,
+        "org.yaml:snakeyaml@1.26"
+      ],
+      "isUpgradable": true,
+      "isPatchable": false,
+      "name": "org.yaml:snakeyaml",
+      "version": "1.25"
+    }
+  ],
+  "ok": false,
+  "dependencyCount": 1,
+  "org": "jensdietrich",
+  "policy": "# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.\nversion: v1.25.0\nignore: {}\npatch: {}\n",
+  "isPrivate": true,
+  "licensesPolicy": {
+    "severities": {},
+    "orgLicenseRules": {
+      "AGPL-1.0": {
+        "licenseType": "AGPL-1.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "AGPL-3.0": {
+        "licenseType": "AGPL-3.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "Artistic-1.0": {
+        "licenseType": "Artistic-1.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "Artistic-2.0": {
+        "licenseType": "Artistic-2.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "CDDL-1.0": {
+        "licenseType": "CDDL-1.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "CPOL-1.02": {
+        "licenseType": "CPOL-1.02",
+        "severity": "high",
+        "instructions": ""
+      },
+      "EPL-1.0": {
+        "licenseType": "EPL-1.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "GPL-2.0": {
+        "licenseType": "GPL-2.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "GPL-3.0": {
+        "licenseType": "GPL-3.0",
+        "severity": "high",
+        "instructions": ""
+      },
+      "LGPL-2.0": {
+        "licenseType": "LGPL-2.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "LGPL-2.1": {
+        "licenseType": "LGPL-2.1",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "LGPL-3.0": {
+        "licenseType": "LGPL-3.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "MPL-1.1": {
+        "licenseType": "MPL-1.1",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "MPL-2.0": {
+        "licenseType": "MPL-2.0",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "MS-RL": {
+        "licenseType": "MS-RL",
+        "severity": "medium",
+        "instructions": ""
+      },
+      "SimPL-2.0": {
+        "licenseType": "SimPL-2.0",
+        "severity": "high",
+        "instructions": ""
+      }
+    }
+  },
+  "packageManager": "maven",
+  "ignoreSettings": {
+    "adminOnly": false,
+    "reasonRequired": false,
+    "disregardFilesystemIgnores": false
+  },
+  "summary": "7 vulnerable dependency paths",
+  "remediation": {
+    "unresolved": [],
+    "upgrade": {
+      "org.yaml:snakeyaml@1.25": {
+        "upgradeTo": "org.yaml:snakeyaml@2.0",
+        "upgrades": [
+          "org.yaml:snakeyaml@1.25",
+          "org.yaml:snakeyaml@1.25",
+          "org.yaml:snakeyaml@1.25",
+          "org.yaml:snakeyaml@1.25",
+          "org.yaml:snakeyaml@1.25",
+          "org.yaml:snakeyaml@1.25",
+          "org.yaml:snakeyaml@1.25"
+        ],
+        "vulns": [
+          "SNYK-JAVA-ORGYAML-3152153",
+          "SNYK-JAVA-ORGYAML-3016888",
+          "SNYK-JAVA-ORGYAML-3113851",
+          "SNYK-JAVA-ORGYAML-2806360",
+          "SNYK-JAVA-ORGYAML-3016889",
+          "SNYK-JAVA-ORGYAML-3016891",
+          "SNYK-JAVA-ORGYAML-537645"
+        ]
+      }
+    },
+    "patch": {},
+    "ignore": {},
+    "pin": {}
+  },
+  "filesystemPolicy": false,
+  "filtered": {
+    "ignore": [],
+    "patch": []
+  },
+  "uniqueCount": 7,
+  "projectName": "io.github.jensdietrich.xshady:CVE-2022-38749",
+  "displayTargetFile": "pom.xml",
+  "hasUnknownVersions": false,
+  "path": "/Users/jens/Development/xshady/CVE-2022-38749"
+}
