@@ -53,9 +53,18 @@ IntelliJ has built-in support to detect vulnerable dependencies. To run this ana
 
 This functionality is based on [checkmarx](https://checkmarx.com/).   
 
-## Eclipse Steady
+### Eclipse Steady
 
-Setup the Steady backend (database servers/web frontend) as described in the [guide](https://eclipse.github.io/steady/user/tutorials/), which requires `docker-compose`. Then update, `./steady-cli/steady-custom.properties` for the project that is to be analysed. To do this, update the value of the property, `vulas.core.app.sourceDir`. This value should be the absolute path to the `<project>` directory for analysis. Then change to the directory `./steady-cli` and run:
+Setup the Eclipse Steady backend (database servers/web frontend) as described in the [guide](https://eclipse.github.io/steady/user/tutorials/), which requires `docker-compose`. CLI and maven plugin analysis clients are available, as described below.
+
+### Maven plugin
+
+Change to the `<project>` directory and run the analysis using `mvn org.eclipse.steady:plugin-maven:3.2.5:app` and then generate the report by running `mvn org.eclipse.steady:plugin-maven:3.2.5:report -Dvulas.report.reportDir=$(pwd)/scan-results/steady`
+
+
+#### CLI 
+
+Then update, `./steady-cli/steady-custom.properties` for the project to be analysed. To do this, update the value of the property, `vulas.core.app.sourceDir`. This value should be the absolute path to the `<project>` directory for analysis. Download dependencies for the project by running `mvn dependency:copy-dependencies`. Then change to the directory `./steady-cli` and run:
 
 `java -jar steady-cli-3.2.5-jar-with-dependencies.jar -goal app`
 
