@@ -2,7 +2,7 @@
 
 shopt -s globstar
 rm output.csv
-echo -e "cve\tlib\tsteady\tsnyk\towasp\tgrype\n" > output.csv
+echo -e "cve\tlib\tsteady\tsnyk\towasp\tgrype" > output.csv
 for p in **/scan-results/; do
   cve=$(echo $p | cut -d'/' -f1)
   echo $cve
@@ -13,7 +13,7 @@ for p in **/scan-results/; do
 
   countsteady=$(jq -r '.vulasReport.vulnerabilities[].bug.id' $steady | grep  $cve | sort | uniq | wc -l)
   countsnyk=$(jq -r '.vulnerabilities[].identifiers.CVE[]' $snyk | grep $cve | sort | uniq | wc -l)
-  countowasp=$(jq -r '.dependencies[].vulnerabilities[].name' $owasp | grep $cve | sort | uniq | wc -l)
+  countowasp=$(jq -r '.dependencies[] | if has("vulnerabilities") then .vulnerabilities[].name else "missing" end' $owasp | grep $cve | sort | uniq | wc -l)
   countgrype1=$(jq -r '.matches[].vulnerability.id' $grype | grep $cve | sort | uniq |  wc -l)
   countgrype2=$(jq -r '.matches[].relatedVulnerabilities[].id' $grype  | grep $cve | sort | uniq | wc -l)
   countgrype=$(expr $countgrype2 + $countgrype1)
