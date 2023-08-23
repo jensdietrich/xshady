@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 function usage() {
-    console.error('Usage: %s CVE', path.basename(process.argv[1]));
+    console.error('Usage: %s CVE [GROUP:ARTIFACT]', path.basename(process.argv[1]));
 }
 
 function createMap(dir) {
@@ -47,7 +47,7 @@ function createMap(dir) {
     return result;
 }
 
-if (process.argv.length != 3) {
+if (process.argv.length < 3) {
     usage();
     process.exit(1);
 }
@@ -67,9 +67,16 @@ const json = JSON.parse(data);
 let affected;
 
 if (json.affected.length > 1) {
-    // TODO: add cmdline argument for this
-    console.error('More than one affected package, specify target artrifact as arg');
-    process.exit(1);
+    if (process.argv.length < 4) {
+        console.error('More than one affected package, specify target artifact as arg');
+        process.exit(1);
+    }
+    affected = json.affected.find(x => x.package.name == process.argv[3]);
+    if (!affected) {
+        console.error('Vulnerable versions: ', json.affected);
+        console.error('Package name "%s" not found', process.argv[3]);
+        process.exit(1);
+    }
 } else {
     const { Console } = console;
     const c = new Console({ stdout: process.stdout, stderr: process.stderr, inspectOptions: { depth: null } });
