@@ -6,3 +6,4 @@ foo
 com.alibaba_fastjson_1.2.80/original/target
 */target
 misc
+tools/GHSA-*.json
