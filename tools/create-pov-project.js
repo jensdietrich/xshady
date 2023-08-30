@@ -83,12 +83,16 @@ if (json.affected.length > 1) {
     affected = json.affected[0];
 }
 
+const nvdUrl = 'https://nvd.nist.gov/vuln/detail/'
+const ghsaUrl = 'https://github.com/advisories/'
+
 const xshady = {
     id: cve,
     artifact: affected.package.name,
     vulnableVersions: affected.versions,
     fixVersion: null,
-    testSignal: "success|failure"
+    testSignal: "success|failure",
+    references: [nvdUrl + cve, ghsaUrl + ghsa]
 }
 
 console.log(JSON.stringify(xshady, null, 2));

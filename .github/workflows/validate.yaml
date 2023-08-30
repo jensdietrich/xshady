@@ -1,0 +1,19 @@
+name: xShady Validation Action
+
+on: [push, pull_request]
+
+jobs:
+  validate_project_metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - uses: cue-lang/setup-cue@v1.0.0
+        with:
+          version: v0.4.3
+        id: install
+
+      - name: run cue validate
+        run: cue vet */pov-project.json tools/pov-project-schema.cue
+
