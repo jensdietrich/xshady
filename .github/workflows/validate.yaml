@@ -15,5 +15,8 @@ jobs:
         id: install
 
       - name: run cue validate
-        run: cue vet */pov-project.json tools/pov-project-schema.cue
-
+        run: |
+          for file in */pov-project.json; do
+            echo "Validating $file"
+            cue vet $file tools/pov-project-schema.cue
+          done
