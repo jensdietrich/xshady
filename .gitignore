@@ -6,4 +6,4 @@ foo
 com.alibaba_fastjson_1.2.80/original/target
 */target
 misc
-DemonstrateSubstitutions.java
+tools/GHSA-*.json
