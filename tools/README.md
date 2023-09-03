@@ -12,7 +12,7 @@ This folder contains tools for creating and maintaining proof-of-vulnerability p
   // Maven artifact GA
   "artifact": "org.zeroturnaround:zt-zip",
   // Vulnerable versions of the artifact
-  "vulnableVersions": [
+  "vulnerableVersions": [
     "1.10",
     "1.11",
     "1.12",
