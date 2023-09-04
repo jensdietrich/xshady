@@ -26,7 +26,7 @@ This folder contains tools for creating and maintaining proof-of-vulnerability p
   // Single version where vulnerability is fixed
   "fixVersion": "1.13",
   // Whether JUnit succeeds or fails in the presence of the vulnerability
-  "testSignal": "success"
+  "testSignalWhenVulnerable": "success"
 }
 
 ```
