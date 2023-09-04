@@ -91,7 +91,7 @@ const xshady = {
     artifact: affected.package.name,
     vulnerableVersions: affected.versions,
     fixVersion: null,
-    testSignal: "success|failure",
+    testSignalWhenVulnerable: "success|failure",
     references: [nvdUrl + cve, ghsaUrl + ghsa]
 }
 

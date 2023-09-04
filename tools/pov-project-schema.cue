@@ -6,7 +6,7 @@
 	// At least one version must be provided
 	vulnerableVersions: [string, ...string]
 	fixVersion: string
-	testSignal: "success" | "failure"
+	testSignalWhenVulnerable: "success" | "failure"
 	// URL references, at least one must be provided
 	references: [string, ...string]
 }
