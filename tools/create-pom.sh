@@ -5,7 +5,7 @@ DIR=$(dirname $SCRIPT)
 PROJECT_FILE=pov-project.json
 
 GA=$(jq -r .artifact $PROJECT_FILE)
-VERSION=$(jq -r '.vulnableVersions|.[0]' $PROJECT_FILE)
+VERSION=$(jq -r '.vulnerableVersions|.[0]' $PROJECT_FILE)
 
 readarray -d ':' -t split < <(printf "%s" "$GA")
 export CVE=$(jq -r .id $PROJECT_FILE)

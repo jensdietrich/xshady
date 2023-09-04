@@ -89,7 +89,7 @@ const ghsaUrl = 'https://github.com/advisories/'
 const xshady = {
     id: cve,
     artifact: affected.package.name,
-    vulnableVersions: affected.versions,
+    vulnerableVersions: affected.versions,
     fixVersion: null,
     testSignal: "success|failure",
     references: [nvdUrl + cve, ghsaUrl + ghsa]
