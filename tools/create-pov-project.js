@@ -86,12 +86,22 @@ if (json.affected.length > 1) {
 const nvdUrl = 'https://nvd.nist.gov/vuln/detail/'
 const ghsaUrl = 'https://github.com/advisories/'
 
+let testSignalWhenVulnerable = "success|failure";	// User needs to figure out which
+try {
+	const mvnTestExitStatus = fs.readFileSync('mvn_clean_test.exitstatus');
+	testSignalWhenVulnerable = mvnTestExitStatus === '1' ? 'failure' : 'success';
+	console.error(`Auto-determined testSignalWhenVulnerable=${testSignalWhenVulnerable}`);
+} catch (e) {
+	// Ignore; most likely the file did not exist
+	console.error('Could not auto-determine testSignalWhenVulnerable');
+}
+
 const xshady = {
     id: cve,
     artifact: affected.package.name,
     vulnerableVersions: affected.versions,
     fixVersion: null,
-    testSignalWhenVulnerable: "success|failure",
+    testSignalWhenVulnerable,
     references: [nvdUrl + cve, ghsaUrl + ghsa]
 }
 
