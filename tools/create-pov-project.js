@@ -88,8 +88,8 @@ const ghsaUrl = 'https://github.com/advisories/'
 
 let testSignalWhenVulnerable = "success|failure";	// User needs to figure out which
 try {
-	const mvnTestExitStatus = fs.readFileSync('mvn_clean_test.exitstatus');
-	testSignalWhenVulnerable = mvnTestExitStatus === '1' ? 'failure' : 'success';
+	const mvnTestExitStatus = fs.readFileSync('mvn_clean_test.exitstatus', 'utf8');
+	testSignalWhenVulnerable = mvnTestExitStatus === '1\n' ? 'failure' : 'success';
 	console.error(`Auto-determined testSignalWhenVulnerable=${testSignalWhenVulnerable}`);
 } catch (e) {
 	// Ignore; most likely the file did not exist
