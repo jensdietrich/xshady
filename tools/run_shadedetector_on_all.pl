@@ -10,20 +10,40 @@ my $cacheDir = (-d $localScratchCacheDir ? $localScratchCacheDir : "$ENV{HOME}/c
 my $jarPath = "../target/shadedetector.jar";
 my $xshadyPath = "$ENV{HOME}/code/xshady";
 
+my $mode = "make";
+
+if (@ARGV && $ARGV[0] eq '--mode') {
+	$mode = $ARGV[1];
+}
+
+die "Unknown mode" if $mode !~ /^(?:make|shell-script)$/;
+print STDERR "Generating run script in $mode mode.\n";
+
+print "# Generated at " . localtime . " by $0\n";
+
+my @targets;
+my @rules;
+
 foreach my $d (<CVE-*>) {
-	my $gav = `tools/guess_gav.pl < $d/pom.xml`;
-	chomp $gav;
-	my $exitStatus = `cat $d/mvn_clean_test.exitstatus`;
-	chomp $exitStatus;
-	my $sig = ($exitStatus eq '0' ? 'success' : 'failure');
+	my $statsFName = "stats$n-$d.log";
+	my $pomFName = `realpath $d/pom.xml`;
+	chomp $pomFName;
 
-	#print "$d: $gav\n";
-	my ($g, $a, $v) = split /:/, $gav;
+	# -g, -a, -v, -sig and any JAVA_HOME=... setting are now all determined from pov-project.json
+	my $cmd = "/usr/bin/time java -jar $jarPath -vul $xshadyPath/$d -l log$n-$d.log -vov vuln_final --stats $statsFName -o1 csv.details?dir=details$n-$d -o2 csv.summary?file=summary$n-$d.csv -cache $cacheDir";
 
-	# For now just assume exit status 1 means failures, not errors (it's actually the case for now).
-	my $cmd = "/usr/bin/time java -jar $jarPath -g $g -a $a -v $v -vul $xshadyPath/$d -sig $sig -l log$n-$d.log -vos vuln_staging -vov vuln_final --stats stats$n-$d.log -o1 csv.details?dir=details$n-$d -o2 csv.summary?file=summary$n-$d.csv -cache $cacheDir";
+	if ($mode eq 'make') {
+		push @targets, $statsFName;
+		push @rules, "$statsFName: $pomFName\n\t$cmd\n\n";
 
-	print "$cmd\n";
+	} else {
+		print "$cmd\n";
+	}
 
 	++$n;
+}
+
+if ($mode eq 'make') {
+	print join(" \\\n\t", "all:", @targets), "\n\n";
+	print @rules;
 }
