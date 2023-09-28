@@ -30,11 +30,11 @@ foreach my $d (<CVE-*>) {
 	chomp $pomFName;
 
 	# -g, -a, -v, -sig and any JAVA_HOME=... setting are now all determined from pov-project.json
-	my $cmd = "/usr/bin/time java -jar $jarPath -vul $xshadyPath/$d -l log$n-$d.log -vov vuln_final --stats $statsFName -o1 csv.details?dir=details$n-$d -o2 csv.summary?file=summary$n-$d.csv -cache $cacheDir";
+	my $cmd = "/usr/bin/time java -jar $jarPath -vul $xshadyPath/$d -l log$n-$d.log -vov vuln_final --stats $statsFName -o1 csv.details?dir=details$n-$d -o2 csv.summary?file=summary$n-$d.csv -cache $cacheDir \${EXTRA_FLAGS}";
 
 	if ($mode eq 'make') {
 		push @targets, $statsFName;
-		push @rules, "$statsFName: $pomFName\n\t$cmd\n\n";
+		push @rules, "$statsFName: $pomFName started\n\t$cmd\n\n";
 
 	} else {
 		print "$cmd\n";
@@ -44,6 +44,12 @@ foreach my $d (<CVE-*>) {
 }
 
 if ($mode eq 'make') {
+	print ".PHONY: all started finished\n\n";
+	unshift @targets, "started";
+	unshift @rules, "started:\n\techo '#'`date` >> \$\@\n\techo EXTRA_FLAGS=\"\${EXTRA_FLAGS}\" >> \$\@\n\n";
+	push @rules, "finished: " . join(" ", @targets) . "\n\tdate >> \$\@\n\n";
+	push @targets, "finished";
+
 	print join(" \\\n\t", "all:", @targets), "\n\n";
 	print @rules;
 }
