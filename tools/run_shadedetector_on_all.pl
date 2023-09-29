@@ -9,6 +9,7 @@ my $localScratchCacheDir = '/local/scratch/whitewa/shadedetector/.cache';
 my $cacheDir = (-d $localScratchCacheDir ? $localScratchCacheDir : "$ENV{HOME}/code/shadedetector/.cache");
 my $jarPath = "../target/shadedetector.jar";
 my $xshadyPath = "$ENV{HOME}/code/xshady";
+my $sumStatsCmd = "../tools/sum_stats.pl stats*.log > summed_stats.log";
 
 my $mode = "make";
 
@@ -23,6 +24,10 @@ print "# Generated at " . localtime . " by $0\n";
 
 my @targets;
 my @rules;
+
+if ($mode eq 'shell-script') {
+	print "echo '#'`date` >> started\necho EXTRA_FLAGS=\"\${EXTRA_FLAGS}\" >> started\n";
+}
 
 foreach my $d (<CVE-*>) {
 	my $statsFName = "stats$n-$d.log";
@@ -47,9 +52,11 @@ if ($mode eq 'make') {
 	print ".PHONY: all started finished\n\n";
 	unshift @targets, "started";
 	unshift @rules, "started:\n\techo '#'`date` >> \$\@\n\techo EXTRA_FLAGS=\"\${EXTRA_FLAGS}\" >> \$\@\n\n";
-	push @rules, "finished: " . join(" ", @targets) . "\n\tdate >> \$\@\n\n";
+	push @rules, "finished: " . join(" ", @targets) . "\n\tdate >> \$\@\n\t$sumStatsCmd\n\n";
 	push @targets, "finished";
 
 	print join(" \\\n\t", "all:", @targets), "\n\n";
 	print @rules;
+} else {
+	print "date >> finished\n$sumStatsCmd\n";
 }
