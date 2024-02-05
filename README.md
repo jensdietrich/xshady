@@ -1,4 +1,4 @@
-# xshady
+# xshady -  – a collection of proof-of-vulnerabilities for common Vulnerabilities in Java https://github.com/jensdietrich/xshady/ 
 
 This repo contains some projects that demonstrate the presence of some known vulnerabilities in libraries. This can be used as input for security analyses in related libraries. A key feature is that the vulnerabilities are testable, and the projects follow a structure that makes them easy to refactor if the analysis requires it. Projects also contain the reports produced by some SCA tools -- this can be used to check those tools for soundness / recall , using the testable projects as oracles.
 
